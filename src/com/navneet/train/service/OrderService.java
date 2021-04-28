@@ -26,7 +26,6 @@ public class OrderService {
             if(!train.isMoving() && train.getCapacity()-train.getOccupied()>=order.getWeight()){
                 List<String> stations=network.getShortestPaths().get(train.getStation()).get(order.getCurrentStation());
                 if(null!=stations && !stations.isEmpty()){
-                    train.setMoving(true);// Train starts moving to pick the order
                     pickOrder(train, order, network);
                     return true;
                 }else{
@@ -45,6 +44,7 @@ public class OrderService {
      * @param network:@{@link Network}
      */
     public void pickOrder(Train train,Orders order, Network network) throws Exception{
+        train.setMoving(true);// Train starts moving to pick the order
         List<String> stations=network.getShortestPaths().get(train.getStation()).get(order.getCurrentStation());
         for(String station: stations){
             if(!station.equalsIgnoreCase(train.getStation())){
