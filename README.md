@@ -30,7 +30,7 @@ Each move, the train t must be at node n. It offloads the packages O onto the no
 - Any number of trains can be at the same node at the same time.
 - A train can carry any number of letters, so long as the total weight of the letters is <= the capacity of the train.
 
-#Assumption:
+# Assumption:
 - Any number of trains may traverse the same edge at the same time (this is somewhat unrealistic, but makes the problem easier to solve)
 
 
