@@ -39,29 +39,28 @@ It would obviously be nice to generate a minimal (or at least relatively short) 
 Optimality, is measured by the maximum time of any move (ie. we are interested in schedules which minimise the time it takes to deliver the letters rather than that minimise the number of moves).
 
 // example input
-3           // number of stations
-A           // station name
-B           // station name
-C           // station name
-2           // number of routes
-E1,A,B,3       // route from A to B that takes 3 units of time
-E2,B,C,1       // route from B to C that takes 1 unit of time
-1           // number of deliveries to be performed
-P1,A,C,5    // package P1 with weight 5 located currently at
-station A that must be delivered to station C
-1           // number of trains
-Q1,B,6      // train T1 with capacity 6 located at station B
+- 3           // number of stations
+- A           // station name
+- B           // station name
+- C           // station name
+- 2           // number of routes
+- E1,A,B,3       // route from A to B that takes 3 units of time
+- E2,B,C,1       // route from B to C that takes 1 unit of time
+- 1           // number of deliveries to be performed
+- P1,A,C,5    // package P1 with weight 5 located currently at station A that must be delivered to station C
+- 1           // number of trains
+- Q1,B,6      // train T1 with capacity 6 located at station B
 // example output
-Train :Q1 moving from:B to:A Packages: Total Weight:0 Total Capacity:6 Time Taken:3 units
-Order :P1 picked by Train:Q1 at Station:A
-Train :Q1 moving from:A to:B Packages:P1  Total Weight:5 Total Capacity:6 Time Taken:3 units
-Train :Q1 moving from:B to:C Packages:P1  Total Weight:5 Total Capacity:6 Time Taken:1 units
-Order :P1 delivered by Train:Q1 at Station:C
+- Train :Q1 moving from:B to:A Packages: Total Weight:0 Total Capacity:6 Time Taken:3 units
+- Order :P1 picked by Train:Q1 at Station:A
+- Train :Q1 moving from:A to:B Packages:P1  Total Weight:5 Total Capacity:6 Time Taken:3 units
+- Train :Q1 moving from:B to:C Packages:P1  Total Weight:5 Total Capacity:6 Time Taken:1 units
+- Order :P1 delivered by Train:Q1 at Station:C
 All Orders delivered by Train:Q1 , Setting train to idle at Station:C
 
 ## Solution (Version 1.0) - Simple solution
-Step 1: Calculate all possible shortest paths from all stations to other stations. (Used Dijkstra's algorithm, A* can also be used)
-Step 2: Iterate via package list and check which train can pick the package (as per Weight limit)
-Step 3: Train starts moving to pick the package and is no longer available to pick new package.
-Step 4: Train picks the package and moves via shortest path to deliver the package to destination.
-Step 5: Repeat from Step 2.
+- Step 1: Calculate all possible shortest paths from all stations to other stations. (Used Dijkstra's algorithm, A* can also be used)
+- Step 2: Iterate via package list and check which train can pick the package (as per Weight limit)
+- Step 3: Train starts moving to pick the package and is no longer available to pick new package.
+- Step 4: Train picks the package and moves via shortest path to deliver the package to destination.
+- Step 5: Repeat from Step 2.
